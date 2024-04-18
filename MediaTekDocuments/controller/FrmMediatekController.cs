@@ -76,15 +76,20 @@ namespace MediaTekDocuments.controller
             return access.GetAllPublics();
         }
 
+        public List<CommandeDocument> GetCommandeDocument(string idDocument)
+        {
+            return access.GetCommandeDocument(idDocument);
+        }
+
 
         /// <summary>
         /// récupère les exemplaires d'une revue
         /// </summary>
         /// <param name="idDocuement">id de la revue concernée</param>
         /// <returns>Liste d'objets Exemplaire</returns>
-        public List<Exemplaire> GetExemplairesRevue(string idDocuement)
+        public List<Exemplaire> GetExemplairesRevue(string idDocument)
         {
-            return access.GetExemplairesRevue(idDocuement);
+            return access.GetExemplairesRevue(idDocument);
         }
 
         /// <summary>
@@ -95,6 +100,51 @@ namespace MediaTekDocuments.controller
         public bool CreerExemplaire(Exemplaire exemplaire)
         {
             return access.CreerExemplaire(exemplaire);
+        }
+
+        /// <summary>
+        /// Crée un exemplaire d'une revue dans la bdd
+        /// </summary>
+        /// <param name="commande">L'objet Exemplaire concerné</param>
+        /// <returns>True si la création a pu se faire</returns>
+        public bool CreerCommande(CommandeDocument commandeDocument)
+        {
+            return access.CreerCommande(commandeDocument);
+        }
+
+        public bool ModifierCommande(MajCommande commandeDocument, string id)
+        {
+            return access.ModifierCommande(commandeDocument, id);
+        }
+
+        public bool SupprimerCommande(Commande commande)
+        {
+            return access.SupprimerCommande(commande);
+        }
+
+        public List<Abonnement> GetAbonnementRevue(string abonnement)
+        {
+            return access.GetAbonnementRevue(abonnement);
+        }
+
+        public bool CreerAbonnement(Abonnement abonnement)
+        {
+            return access.CreerAbonnement(abonnement);
+        }
+
+        public bool SupprimerAbonnement(Abonnement abonnement)
+        {
+            return access.SupprimerAbonnement(abonnement);
+        }
+
+        public List<ExpirationAbonnements> GetExpirationAbonnements(string today)
+        {
+            return access.GetExpirationAbonnements(today);
+        }
+
+        public List<Utilisateur> GetUtilisateur(string nom)
+        {
+            return access.GetUtilisateur(nom);
         }
     }
 }

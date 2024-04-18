@@ -36,7 +36,10 @@ namespace MediaTekDocuments.dal
         private const string POST = "POST";
         /// <summary>
         /// méthode HTTP pour update
-
+        private const string PUT = "PUT";
+        /// <summary>
+        /// méthode HTTP pour delete
+        private const string DELETE = "DELETE";
         /// <summary>
         /// Méthode privée pour créer un singleton
         /// initialise l'accès à l'API
@@ -161,6 +164,135 @@ namespace MediaTekDocuments.dal
             }
             return false; 
         }
+
+        /// <summary>
+        /// Retourne les commandes d'un document
+        /// </summary>
+        /// <param name="idLivreDvd">id du document concerné</param>
+        /// <returns>Liste d'objets CommandeDocument</returns>
+        public List<CommandeDocument> GetCommandeDocument(string idLivreDvd)
+        {
+            String jsonIdLivreDvd = convertToJson("id", idLivreDvd);
+            Console.WriteLine("********" + uriApi + "commandedocument/" + jsonIdLivreDvd);
+            List<CommandeDocument> lesCommandes = TraitementRecup<CommandeDocument>(GET, "commandedocument/" + jsonIdLivreDvd);
+            return lesCommandes;
+        }
+
+        /// <summary>
+        /// ecriture d'une commande de document en base de données
+        /// </summary>
+        /// <param name="commandedocument">commande à insérer</param>
+        /// <returns>true si l'insertion a pu se faire (retour != null)</returns>
+        public bool CreerCommande(CommandeDocument commandeDocument)
+        {
+            String jsonCommandeDocument = JsonConvert.SerializeObject(commandeDocument, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                Converters = new List<JsonConverter> { new CustomDateTimeConverter() }
+            });
+            Console.WriteLine("********" + uriApi + "commandedocument/" + jsonCommandeDocument);
+            try
+            {
+                // récupération soit d'une liste vide (requête ok) soit de null (erreur)
+                List<CommandeDocument> listeCommandeDocument = TraitementRecup<CommandeDocument>(POST, "commandedocument/" + jsonCommandeDocument);
+                return (listeCommandeDocument != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        public bool ModifierCommande(MajCommande commandeDocument, string id)
+        {
+
+            String jsonModifCommande = JsonConvert.SerializeObject(commandeDocument, new CustomDateTimeConverter());
+            Console.WriteLine("********" + uriApi + "commandedocument/" + id + "/" + jsonModifCommande);
+            try
+            {
+                List<MajCommande> listeCommandeDocument = TraitementRecup<MajCommande>(PUT, "commandedocument/"+ id + "/" + jsonModifCommande);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        public bool SupprimerCommande(Commande commande)
+        {
+            String jsonSupprCommande = JsonConvert.SerializeObject(commande, new CustomDateTimeConverter());
+            Console.WriteLine("********" + uriApi + "commande/" + jsonSupprCommande);
+            try
+            {
+                List<Commande> listeCommande = TraitementRecup<Commande>(DELETE, "commande/" + jsonSupprCommande);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        public List<Abonnement> GetAbonnementRevue(string idRevue)
+        {
+            String jsonIdRevue = convertToJson("id", idRevue);
+            Console.WriteLine("********" + uriApi + "abonnement/" + jsonIdRevue);
+
+            List<Abonnement> lesAbonnements = TraitementRecup<Abonnement>(GET, "abonnement/" + jsonIdRevue);
+            return lesAbonnements;
+        }
+
+        public List<ExpirationAbonnements> GetExpirationAbonnements(string today)
+        {
+            string jsonToday = convertToJson("date", today);
+            Console.WriteLine("********" + uriApi + "expirationabonnements/" + jsonToday);
+
+            List<ExpirationAbonnements> lesExpirations = TraitementRecup<ExpirationAbonnements>(GET, "expirationabonnements/" + jsonToday);
+            Console.WriteLine("*********" + lesExpirations.Count);
+            return lesExpirations;
+        }
+
+        public List<Utilisateur> GetUtilisateur(string nom)
+        {
+            string jsonNom = convertToJson("nom", nom);
+            Console.WriteLine("*********" + uriApi + "utilisateur/" + jsonNom);
+            List<Utilisateur> utilisateur = TraitementRecup<Utilisateur>(GET, "utilisateur/" + jsonNom);
+            return utilisateur;
+        }
+
+        public bool CreerAbonnement(Abonnement abonnement)
+        {
+            String jsonAbonnement = JsonConvert.SerializeObject(abonnement, new CustomDateTimeConverter());
+            Console.WriteLine("********" + uriApi + "abonnement/" + jsonAbonnement);
+            try
+            {    
+                List<Abonnement> listeAbonnements = TraitementRecup<Abonnement>(POST, "abonnement/" + jsonAbonnement);
+                return (listeAbonnements != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        public bool SupprimerAbonnement(Abonnement abonnement)
+        {
+            String jsonSupprAbonnement = JsonConvert.SerializeObject(abonnement, new CustomDateTimeConverter());
+            Console.WriteLine("********" + uriApi + "abonnement/" + jsonSupprAbonnement);
+            try
+            {
+                List<Abonnement> listeAbonnement = TraitementRecup<Abonnement>(DELETE, "abonnement/" + jsonSupprAbonnement);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
 
         /// <summary>
         /// Traitement de la récupération du retour de l'api, avec conversion du json en liste pour les select (GET)
