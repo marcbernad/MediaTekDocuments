@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System.Configuration;
+using Serilog;
 
 namespace MediaTekDocuments.dal
 {
@@ -14,6 +15,7 @@ namespace MediaTekDocuments.dal
     /// </summary>
     public class Access
     {
+        
         /// <summary>
         /// adresse de l'API
         /// </summary>
@@ -49,6 +51,13 @@ namespace MediaTekDocuments.dal
         /// </summary>
         private Access()
         {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Verbose()
+                .WriteTo.File("logs/log.txt",
+                rollingInterval: RollingInterval.Day,
+                restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Information)
+                .CreateLogger();
+
             String authenticationString;
             try
             {
@@ -173,6 +182,7 @@ namespace MediaTekDocuments.dal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Log.Error(ex, "CreerExemplaire : erreur lors de la conversion de l'objet au format JSON");
             }
             return false; 
         }
@@ -212,6 +222,7 @@ namespace MediaTekDocuments.dal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Log.Error(ex, "CreerCommande : erreur lors de la conversion de l'objet au format JSON");
             }
             return false;
         }
@@ -229,6 +240,7 @@ namespace MediaTekDocuments.dal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Log.Error(ex, "ModifierCommande : erreur lors de la conversion de l'objet au format JSON");
             }
             return false;
         }
@@ -245,6 +257,7 @@ namespace MediaTekDocuments.dal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Log.Error(ex, "SupprimerCommande : erreur lors de la conversion de l'objet au format JSON");
             }
             return false;
         }
@@ -288,6 +301,7 @@ namespace MediaTekDocuments.dal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Log.Error(ex, "CreerAbonnement : erreur lors de la conversion de l'objet au format JSON");
             }
             return false;
         }
@@ -304,6 +318,7 @@ namespace MediaTekDocuments.dal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Log.Error(ex, "SupprimerAbonnement : erreur lors de la conversion de l'objet au format JSON");
             }
             return false;
         }
@@ -337,10 +352,12 @@ namespace MediaTekDocuments.dal
                 else
                 {
                     Console.WriteLine("code erreur = " + code + " message = " + (String)retour["message"]);
+                    Log.Error("Le code 200 est attendu mais le code {Code} a été récupéré avec le message : {Retour}", code, (String)retour["message"]);
                 }
             }catch(Exception e)
             {
                 Console.WriteLine("Erreur lors de l'accès à l'API : "+e.Message);
+                Log.Fatal(e, "Erreur lors de l'accès à l'API : {Message}", e.Message);
                 Environment.Exit(0);
             }
             return liste;
