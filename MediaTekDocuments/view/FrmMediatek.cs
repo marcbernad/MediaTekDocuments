@@ -1635,7 +1635,7 @@ namespace MediaTekDocuments.view
         {
             if (!txtNbExemplaireCommandeDvd.Text.Equals("") && !txtMontantCommandeDvd.Text.Equals("") && !txtNumCommandeDvd.Text.Equals(""))
             {
-                Dvd dvd = lesDvd.Find(x => x.Id.Equals(txtDvdNumRecherche.Text)); ;
+                Dvd dvd = lesDvd.Find(x => x.Id.Equals(txtDvdNumRecherche.Text));
                 string idLivreDvd = dvd.Id;
                 string id = txtNumCommandeDvd.Text;
                 int nbExemplaire = int.Parse(txtNbExemplaireCommandeDvd.Text);
@@ -1871,9 +1871,11 @@ namespace MediaTekDocuments.view
             triColonneAbonnement(titreColonne);
         }
 
+       // && !dtpRevueFinAbonnement.Value.Equals(null)
+
         private void btnEnregistrerAbonnement_Click(object sender, EventArgs e)
         {
-            if (!txtMontantAbonnement.Text.Equals("") && !dtpRevueFinAbonnement.Value.Equals(null) && !txtNumCommandeAbonnement.Text.Equals(""))
+            if (!txtMontantAbonnement.Text.Equals("") && !txtNumCommandeAbonnement.Text.Equals(""))
             {
                 Revue revue = lesRevues.Find(x => x.Id.Equals(txtNumRechercheRevue.Text));
                 string idRevue = revue.Id;
@@ -1914,7 +1916,7 @@ namespace MediaTekDocuments.view
             {
                 Abonnement abonnementSelectionne = (Abonnement)dgvAbonnementRevue.SelectedRows[0].DataBoundItem;
                 List<Exemplaire> exemplairesRevue = controller.GetExemplairesRevue(abonnementSelectionne.IdRevue);
-                bool exemplaireParu = exemplairesRevue.Any(ex => ex.Id == abonnementSelectionne.IdRevue && ParutionDansAbonnement(abonnementSelectionne.DateCommande, abonnementSelectionne.DateFinAbonnement, ex.DateAchat));
+                bool exemplaireParu = exemplairesRevue.Exists(ex => ex.Id == abonnementSelectionne.IdRevue && ParutionDansAbonnement(abonnementSelectionne.DateCommande, abonnementSelectionne.DateFinAbonnement, ex.DateAchat));
 
                 if (!exemplaireParu)
                 {

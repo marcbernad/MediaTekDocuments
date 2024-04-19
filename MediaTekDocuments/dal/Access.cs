@@ -212,6 +212,7 @@ namespace MediaTekDocuments.dal
             try
             {
                 List<MajCommande> listeCommandeDocument = TraitementRecup<MajCommande>(PUT, "commandedocument/"+ id + "/" + jsonModifCommande);
+                return (listeCommandeDocument != null);
             }
             catch (Exception ex)
             {
@@ -227,6 +228,7 @@ namespace MediaTekDocuments.dal
             try
             {
                 List<Commande> listeCommande = TraitementRecup<Commande>(DELETE, "commande/" + jsonSupprCommande);
+                return (listeCommande != null);
             }
             catch (Exception ex)
             {
@@ -285,6 +287,7 @@ namespace MediaTekDocuments.dal
             try
             {
                 List<Abonnement> listeAbonnement = TraitementRecup<Abonnement>(DELETE, "abonnement/" + jsonSupprAbonnement);
+                return (listeAbonnement != null);
             }
             catch (Exception ex)
             {
