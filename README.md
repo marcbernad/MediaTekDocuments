@@ -54,7 +54,7 @@ Si une modification est apportée au numéro de la revue, toutes les zones sont 
 Cette partie n'est accessible que si une revue a bien été trouvée dans la première partie.<br>
 Il est possible alors de réceptionner une nouvelle parution en saisissant son numéro, en sélectionnant une date (date du jour proposée par défaut) et en cherchant l'image correspondante (optionnel) qui doit alors s'afficher à droite.<br>
 Le clic sur "Valider la réception" va permettre d'ajouter un tuple dans la table Exemplaire de la BDD. La parution correspondante apparaitra alors automatiquement dans la liste des parutions et les zones de la partie "Nouvelle parution réceptionnée pour cette revue" seront réinitialisées.<br>
-Si le numéro de la parution existe déjà, il n’est pas ajouté et un message est affiché.
+Si le numéro de la parution existe déjà, il n’est pas ajouté et un message est affiché.<br>
 ![img4](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/225e10f2-406a-4b5e-bfa9-368d45456056)<br>
 
 ### Onglet 5 : Commandes Livres
@@ -66,7 +66,7 @@ Les informations détaillées sont identiques à celles de l'onglet Livre.
 Les commandes en cours ou passées sont affichées.<br>
 Il est possible de modifier le statut de la commande ou la supprimer si elle n'est pas encore livrée.
 #### Nouvelle commande
-Il est possible d'ajouter une nouvelle commande en saisissant les informations de commande.<br>
+Il est possible d'ajouter une nouvelle commande en saisissant les informations de commande.<br><br>
 ![img5](https://github.com/marcbernad/MediaTekDocuments/assets/115026928/412facd5-c611-41d6-9b8d-e98bd6c763d9)
 
 ### Onglet 6 : Commandes DVD
