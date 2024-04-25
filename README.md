@@ -2,8 +2,8 @@
 Cette application permet de gérer les documents (livres, DVD, revues) d'une médiathèque. Elle a été codée en C# sous Visual Studio 2019. C'est une application de bureau, prévue d'être installée sur plusieurs postes accédant à la même base de données.<br>
 L'application exploite une API REST pour accéder à la BDD MySQL. Des explications sont données plus loin, ainsi que le lien de récupération.
 ## Présentation
-L'application permet de consulter les informations des documents, valider la parution d'une revue, gérer les commandes de livres ou dvd et les abonnements aux revues.
-<img width="250" alt="diagramme cas d'utilisation " src="https://github.com/marcbernad/MediaTekDocuments/assets/115026928/973ab71c-23db-455a-94d2-3963934f36f5">
+L'application permet de consulter les informations des documents, valider la parution d'une revue, gérer les commandes de livres ou dvd et les abonnements aux revues.<br>
+![img1](https://github.com/marcbernad/MediaTekDocuments/assets/115026928/973ab71c-23db-455a-94d2-3963934f36f5)
 
 <br>L'application ne comporte qu'une seule fenêtre divisée en plusieurs onglets.
 ## Les différents onglets
