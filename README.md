@@ -55,11 +55,38 @@ Cette partie n'est accessible que si une revue a bien été trouvée dans la pre
 Il est possible alors de réceptionner une nouvelle parution en saisissant son numéro, en sélectionnant une date (date du jour proposée par défaut) et en cherchant l'image correspondante (optionnel) qui doit alors s'afficher à droite.<br>
 Le clic sur "Valider la réception" va permettre d'ajouter un tuple dans la table Exemplaire de la BDD. La parution correspondante apparaitra alors automatiquement dans la liste des parutions et les zones de la partie "Nouvelle parution réceptionnée pour cette revue" seront réinitialisées.<br>
 Si le numéro de la parution existe déjà, il n’est pas ajouté et un message est affiché.
-![img4](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/225e10f2-406a-4b5e-bfa9-368d45456056)
+![img4](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/225e10f2-406a-4b5e-bfa9-368d45456056)<br>
+
+### Onglet 5 : Commandes Livres
+#### Recherche
+La recherche se fait par le numéro de document.
+#### Informations détaillées
+Les informations détaillées sont identiques à celles de l'onglet Livre.
+#### Gestion de la commande
+Les commandes en cours ou passées sont affichées.<br>
+Il est possible de modifier le statut de la commande ou la supprimer si elle n'est pas encore livrée.
+#### Nouvelle commande
+Il est possible d'ajouter une nouvelle commande en saisissant les informations de commande.<br>
+![img5](https://github.com/marcbernad/MediaTekDocuments/assets/115026928/412facd5-c611-41d6-9b8d-e98bd6c763d9)
+
+### Onglet 6 : Commandes DVD
+L'onglet est identique à l'onglet Commandes Livres, à l'exception des informations détaillées adaptées aux dvd.
+### Onglet 7 : Gestion Revues
+#### Recherche
+La recherche se fait par le numéro de revue.
+#### Informations détaillées
+Les informations détaillées sont identiques à celles de l'onglet Revues.
+#### Gestion des abonnements
+Les abonnements en cours ou passées sont affichés.<br>
+Il est possible de supprimer l'abonnement si aucun numéro n'est paru durant la période d'abonnement.
+#### Nouvel abonnement ou renouvellement
+Il est possible d'ajouter un nouvel abonnement en saisissant les informations d'abonnement.<br>
+![img6](https://github.com/marcbernad/MediaTekDocuments/assets/115026928/7f47b4c4-8d2c-4f5f-9047-6dd02a5d2790)
+
 ## La base de données
 La base de données 'mediatek86 ' est au format MySQL.<br>
 Voici sa structure :<br>
-![img5](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/4314f083-ec8b-4d27-9746-fecd1387d77b)
+![img7](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/4314f083-ec8b-4d27-9746-fecd1387d77b)
 <br>On distingue les documents "génériques" (ce sont les entités Document, Revue, Livres-DVD, Livre et DVD) des documents "physiques" qui sont les exemplaires de livres ou de DVD, ou bien les numéros d’une revue ou d’un journal.<br>
 Chaque exemplaire est numéroté à l’intérieur du document correspondant, et a donc un identifiant relatif. Cet identifiant est réel : ce n'est pas un numéro automatique. <br>
 Un exemplaire est caractérisé par :<br>
