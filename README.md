@@ -6,11 +6,20 @@ L'application permet de consulter les informations des documents, valider la par
 ![img1](https://github.com/marcbernad/MediaTekDocuments/assets/115026928/973ab71c-23db-455a-94d2-3963934f36f5)
 
 <br>L'application ne comporte qu'une seule fenêtre divisée en plusieurs onglets.
+
+## Connexion
+L'application nécessite de se connecter avec ses identifiants. Selon le service d'affection de l'utilisateur, différents droits s'appliquent.<br>
+![img2](https://github.com/marcbernad/MediaTekDocuments/assets/115026928/3612d19c-34c7-42a5-bd32-776c7359c816)<br>
+
+## Rappel expiration des abonnements
+Pour les salariés du service administratif qui s'occupe des commandes et des abonnements, un rappel des abonnements bientôt expirés s'affiche après connexion.
+![img3](https://github.com/marcbernad/MediaTekDocuments/assets/115026928/2cbbd3d2-db58-44bf-88fc-a212d4be86da)<br>
+
 ## Les différents onglets
 ### Onglet 1 : Livres
 Cet onglet présente la liste des livres, triée par défaut sur le titre.<br>
 La liste comporte les informations suivantes : titre, auteur, collection, genre, public, rayon.
-![img2](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/e3f31979-cf24-416d-afb1-a588356e8966)
+![img3](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/e3f31979-cf24-416d-afb1-a588356e8966)
 #### Recherches
 <strong>Par le titre :</strong> Il est possible de rechercher un ou plusieurs livres par le titre. La saisie dans la zone de recherche se fait en autocomplétions sans tenir compte de la casse. Seuls les livres concernés apparaissent dans la liste.<br>
 <strong>Par le numéro :</strong> il est possible de saisir un numéro et, en cliquant sur "Rechercher", seul le livre concerné apparait dans la liste (ou un message d'erreur si le livre n'est pas trouvé, avec la liste remplie à nouveau).
@@ -46,11 +55,11 @@ Cette partie n'est accessible que si une revue a bien été trouvée dans la pre
 Il est possible alors de réceptionner une nouvelle parution en saisissant son numéro, en sélectionnant une date (date du jour proposée par défaut) et en cherchant l'image correspondante (optionnel) qui doit alors s'afficher à droite.<br>
 Le clic sur "Valider la réception" va permettre d'ajouter un tuple dans la table Exemplaire de la BDD. La parution correspondante apparaitra alors automatiquement dans la liste des parutions et les zones de la partie "Nouvelle parution réceptionnée pour cette revue" seront réinitialisées.<br>
 Si le numéro de la parution existe déjà, il n’est pas ajouté et un message est affiché.
-![img3](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/225e10f2-406a-4b5e-bfa9-368d45456056)
+![img4](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/225e10f2-406a-4b5e-bfa9-368d45456056)
 ## La base de données
 La base de données 'mediatek86 ' est au format MySQL.<br>
 Voici sa structure :<br>
-![img4](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/4314f083-ec8b-4d27-9746-fecd1387d77b)
+![img5](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/4314f083-ec8b-4d27-9746-fecd1387d77b)
 <br>On distingue les documents "génériques" (ce sont les entités Document, Revue, Livres-DVD, Livre et DVD) des documents "physiques" qui sont les exemplaires de livres ou de DVD, ou bien les numéros d’une revue ou d’un journal.<br>
 Chaque exemplaire est numéroté à l’intérieur du document correspondant, et a donc un identifiant relatif. Cet identifiant est réel : ce n'est pas un numéro automatique. <br>
 Un exemplaire est caractérisé par :<br>
