@@ -19,7 +19,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// adresse de l'API
         /// </summary>
-        private static readonly string uriApi = "http://localhost/rest_mediatekdocuments/";
+        private static readonly string uriApi = "https://mediatekdocuments-api.fr/rest_mediatekdocuments/";
 
         private static readonly string connectionName = "MediaTekDocuments.Properties.Settings.apiAuthenticationString";
 
@@ -84,6 +84,11 @@ namespace MediaTekDocuments.dal
             return instance;
         }
 
+        /// <summary>
+        /// Récupère la chaîne de connexion à la bdd
+        /// </summary>
+        /// <param name="name">nom de la chaîne</param>
+        /// <returns>La chaîne de connexion à la bdd</returns>
         static string GetConnectionStringByName(string name)
         {
             string returnValue = null;
@@ -203,7 +208,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// ecriture d'une commande de document en base de données
         /// </summary>
-        /// <param name="commandedocument">commande à insérer</param>
+        /// <param name="commandeDocument">commande à insérer</param>
         /// <returns>true si l'insertion a pu se faire (retour != null)</returns>
         public bool CreerCommande(CommandeDocument commandeDocument)
         {
@@ -227,6 +232,13 @@ namespace MediaTekDocuments.dal
             return false;
         }
 
+
+        /// <summary>
+        /// Modification d'une commande dans la base de données
+        /// </summary>
+        /// <param name="commandeDocument">Commande à modifier</param>
+        /// <param name="id">Id de la commande</param>
+        /// <returns>true si la modification a pu se faire (retour != null)</returns>
         public bool ModifierCommande(MajCommande commandeDocument, string id)
         {
 
@@ -245,6 +257,11 @@ namespace MediaTekDocuments.dal
             return false;
         }
 
+        /// <summary>
+        /// Suppression d'une commande dans la base de données
+        /// </summary>
+        /// <param name="commande">Commande à supprimer</param>
+        /// <returns>true si la suppression a pu se faire (retour != null)</returns>
         public bool SupprimerCommande(Commande commande)
         {
             String jsonSupprCommande = JsonConvert.SerializeObject(commande, new CustomDateTimeConverter());
@@ -262,6 +279,11 @@ namespace MediaTekDocuments.dal
             return false;
         }
 
+        /// <summary>
+        /// Récupère les abonnements d'une revue
+        /// </summary>
+        /// <param name="idRevue">Id de la revue</param>
+        /// <returns>Liste d'abonnements</returns>
         public List<Abonnement> GetAbonnementRevue(string idRevue)
         {
             String jsonIdRevue = convertToJson("id", idRevue);
@@ -271,6 +293,11 @@ namespace MediaTekDocuments.dal
             return lesAbonnements;
         }
 
+        /// <summary>
+        /// Récupère les abonnements qui expirent dans les 30 jours
+        /// </summary>
+        /// <param name="today">Date du jour</param>
+        /// <returns>Liste d'id et dates de fin d'abonnement</returns>
         public List<ExpirationAbonnements> GetExpirationAbonnements(string today)
         {
             string jsonToday = convertToJson("date", today);
@@ -281,6 +308,11 @@ namespace MediaTekDocuments.dal
             return lesExpirations;
         }
 
+        /// <summary>
+        /// Récupère un utilisateur dans la base de données
+        /// </summary>
+        /// <param name="nom">Nom de l'utilisateur</param>
+        /// <returns>Un utilisateur</returns>
         public List<Utilisateur> GetUtilisateur(string nom)
         {
             string jsonNom = convertToJson("nom", nom);
@@ -289,6 +321,11 @@ namespace MediaTekDocuments.dal
             return utilisateur;
         }
 
+        /// <summary>
+        /// Crée un abonnement dans la base de données
+        /// </summary>
+        /// <param name="abonnement">Abonnement à créer</param>
+        /// <returns>true si l'insertion a pu se faire (retour != null)</returns>
         public bool CreerAbonnement(Abonnement abonnement)
         {
             String jsonAbonnement = JsonConvert.SerializeObject(abonnement, new CustomDateTimeConverter());
@@ -306,6 +343,11 @@ namespace MediaTekDocuments.dal
             return false;
         }
 
+        /// <summary>
+        /// Supprime un abonnement de la base de données
+        /// </summary>
+        /// <param name="abonnement">Abonnement à supprimer</param>
+        /// <returns>true si la suppression a pu se faire (retour != null)</returns>
         public bool SupprimerAbonnement(Abonnement abonnement)
         {
             String jsonSupprAbonnement = JsonConvert.SerializeObject(abonnement, new CustomDateTimeConverter());
@@ -366,8 +408,8 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Convertit en json un couple nom/valeur
         /// </summary>
-        /// <param name="nom"></param>
-        /// <param name="valeur"></param>
+        /// <param name="nom">Nom</param>
+        /// <param name="valeur">Valeur</param>
         /// <returns>couple au format json</returns>
         private String convertToJson(Object nom, Object valeur)
         {

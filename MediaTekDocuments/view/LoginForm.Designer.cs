@@ -78,6 +78,7 @@ namespace MediaTekDocuments.view
             // 
             this.txtPassword.Location = new System.Drawing.Point(314, 203);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(242, 26);
             this.txtPassword.TabIndex = 4;
             // 

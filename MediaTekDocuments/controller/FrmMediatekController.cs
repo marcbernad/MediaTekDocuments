@@ -76,6 +76,11 @@ namespace MediaTekDocuments.controller
             return access.GetAllPublics();
         }
 
+        /// <summary>
+        /// Récupère les commande d'un document dans la bdd
+        /// </summary>
+        /// <param name="idDocument">Id du document concerné</param>
+        /// <returns>Liste de commandes</returns>
         public List<CommandeDocument> GetCommandeDocument(string idDocument)
         {
             return access.GetCommandeDocument(idDocument);
@@ -85,7 +90,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// récupère les exemplaires d'une revue
         /// </summary>
-        /// <param name="idDocuement">id de la revue concernée</param>
+        /// <param name="idDocument">id de la revue concernée</param>
         /// <returns>Liste d'objets Exemplaire</returns>
         public List<Exemplaire> GetExemplairesRevue(string idDocument)
         {
@@ -112,36 +117,72 @@ namespace MediaTekDocuments.controller
             return access.CreerCommande(commandeDocument);
         }
 
+        /// <summary>
+        /// Modifie l'état d'une commande dans la bdd
+        /// </summary>
+        /// <param name="commandeDocument">L'objet MajCommande concerné</param>
+        /// <param name="id">L'id de la commande</param>
+        /// <returns>True si la modification a pu se faire</returns>
         public bool ModifierCommande(MajCommande commandeDocument, string id)
         {
             return access.ModifierCommande(commandeDocument, id);
         }
 
+        /// <summary>
+        /// Supprime une commande de la bdd
+        /// </summary>
+        /// <param name="commande">L'objet Commande concerné</param>
+        /// <returns>True si la suppression a pu se faire</returns>
         public bool SupprimerCommande(Commande commande)
         {
             return access.SupprimerCommande(commande);
         }
 
-        public List<Abonnement> GetAbonnementRevue(string abonnement)
+        /// <summary>
+        /// Récupère les abonnements de la revue sélectionnée
+        /// </summary>
+        /// <param name="id">Id de la revue sélectionnée</param>
+        /// <returns>liste d'abonnements</returns>
+        public List<Abonnement> GetAbonnementRevue(string id)
         {
-            return access.GetAbonnementRevue(abonnement);
+            return access.GetAbonnementRevue(id);
         }
 
+        /// <summary>
+        /// Crée un abonnement dans la bdd
+        /// </summary>
+        /// <param name="abonnement">L'objet Abonnement concerné</param>
+        /// <returns>True si la création a pu se faire</returns>
         public bool CreerAbonnement(Abonnement abonnement)
         {
             return access.CreerAbonnement(abonnement);
         }
 
+        /// <summary>
+        /// Supprime un abonnement de la bdd
+        /// </summary>
+        /// <param name="abonnement">L'objet Abonnement concerné</param>
+        /// <returns>True si la suppression a pu se faire</returns>
         public bool SupprimerAbonnement(Abonnement abonnement)
         {
             return access.SupprimerAbonnement(abonnement);
         }
 
+        /// <summary>
+        /// Récupère les abonnements expirés dans les 30 jours dans la bdd
+        /// </summary>
+        /// <param name="today">Date du jour</param>
+        /// <returns>Liste d'id et date de fin d'abonnement</returns>
         public List<ExpirationAbonnements> GetExpirationAbonnements(string today)
         {
             return access.GetExpirationAbonnements(today);
         }
 
+        /// <summary>
+        /// Récupère un utilisateur dans la bdd
+        /// </summary>
+        /// <param name="nom">Nom de l'utilisateur</param>
+        /// <returns>Un utilisateur</returns>
         public List<Utilisateur> GetUtilisateur(string nom)
         {
             return access.GetUtilisateur(nom);

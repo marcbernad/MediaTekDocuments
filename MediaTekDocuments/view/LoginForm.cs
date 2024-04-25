@@ -24,7 +24,12 @@ namespace MediaTekDocuments.view
         }
 
 
-
+        /// <summary>
+        /// Valide la connexion si l'utilisateur est trouvé
+        /// </summary>
+        /// <param name="nom">Nom</param>
+        /// <param name="motDePasseSaisi">Mot de passe saisi dans l'application</param>
+        /// <returns></returns>
         public bool ValiderConnexion(string nom, string motDePasseSaisi)
         {
             List<Utilisateur> utilisateur = controller.GetUtilisateur(nom);
@@ -37,7 +42,11 @@ namespace MediaTekDocuments.view
             return false;
         }
 
-
+        /// <summary>
+        /// Ouvre l'application si la connexion a réussi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConnexion_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text;

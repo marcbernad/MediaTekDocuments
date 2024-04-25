@@ -19,6 +19,10 @@ namespace MediaTekDocuments.view
             this.controller = new FrmMediatekController();
         }
 
+        /// <summary>
+        /// Récupère les abonnements sur le point d'expirer
+        /// </summary>
+        /// <returns>Liste d'id et de dates de fin d'abonnement</returns>
         public List<ExpirationAbonnements> GetExpirationAbonnements()
         {
             DateTime today = DateTime.Today;
@@ -26,6 +30,10 @@ namespace MediaTekDocuments.view
             return lesExpirations = controller.GetExpirationAbonnements(todayString);
         }
 
+        /// <summary>
+        /// Remplit le datagridview des abonnements sur le point d'expirer
+        /// </summary>
+        /// <param name="expirations">les abonnements sur le point d'expirer</param>
         private void RemplirReceptionExpirationAbonnementListe(List<ExpirationAbonnements> expirations)
         {
 
@@ -46,11 +54,21 @@ namespace MediaTekDocuments.view
             }
         }
 
+        /// <summary>
+        /// Ferme la fenêtre
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFermerFenetre_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Charge la fenêtre en remplissant le datagridview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExpirationForm_Load(object sender, EventArgs e)
         {
             lesExpirations = GetExpirationAbonnements();
