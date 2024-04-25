@@ -102,6 +102,9 @@ De même, un DVD est aussi identifié par son numéro de document, et possède u
 Enfin, 3 tables permettent de mémoriser les données concernant les commandes de livres ou DVD et les abonnements. Une commande est effectuée à une date pour un certain montant. Un abonnement est une commande qui a pour propriété complémentaire la date de fin de l’abonnement : il concerne une revue.  Une commande de livre ou DVD a comme caractéristique le nombre d’exemplaires commandé et concerne donc un livre ou un DVD.<br>
 Un utilisateur possède un identifiant et possède un nom, un password (mot de passe) et un identifiant le reliant à son service.<br>
 <br>
+
+## Documentation technique
+La documentation technique est disponible sous forme de fichier téléchargeable dans le dépôt : Documentation.chm
 ## L'API REST
 L'accès à la BDD se fait à travers une API REST protégée par une authentification basique.<br>
 Le code de l'API se trouve ici :<br>
