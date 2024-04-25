@@ -12,7 +12,7 @@ L'application nécessite de se connecter avec ses identifiants. Selon le service
 ![img2](https://github.com/marcbernad/MediaTekDocuments/assets/115026928/3612d19c-34c7-42a5-bd32-776c7359c816)<br>
 
 ## Rappel expiration des abonnements
-Pour les salariés du service administratif qui s'occupe des commandes et des abonnements, un rappel des abonnements bientôt expirés s'affiche après connexion.
+Pour les salariés du service administratif qui s'occupe des commandes et des abonnements, un rappel des abonnements bientôt expirés s'affiche après connexion.<br>
 ![img3](https://github.com/marcbernad/MediaTekDocuments/assets/115026928/2cbbd3d2-db58-44bf-88fc-a212d4be86da)<br>
 
 ## Les différents onglets
